@@ -70,4 +70,33 @@ mysql> DESC marks;
 +---------------+--------------+------+-----+---------+-------+
 7 rows in set (0.00 sec)
 
-mysql>
+mysql> ALTER TABLE marks
+    ->   ADD ca_marks DECIMAL(6,2)
+    ->     GENERATED ALWAYS AS (
+    ->       COALESCE(quiz,0)
+    ->       + COALESCE(assessments,0)
+    ->       + COALESCE(mid_practical,0)
+    ->       + COALESCE(mid_theory,0)
+    ->     ) STORED,
+    ->   ADD final_marks DECIMAL(6,2)
+    ->     GENERATED ALWAYS AS (
+    ->       COALESCE(end_practical,0) + COALESCE(end_theory,0)
+    ->     ) STORED;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC marks;
++---------------+--------------+------+-----+---------+------------------+
+| Field         | Type         | Null | Key | Default | Extra            |
++---------------+--------------+------+-----+---------+------------------+
+| user_id       | varchar(10)  | YES  | MUL | NULL    |                  |
+| quiz          | decimal(4,2) | YES  |     | NULL    |                  |
+| assessments   | decimal(4,2) | YES  |     | NULL    |                  |
+| mid_practical | decimal(4,2) | YES  |     | NULL    |                  |
+| mid_theory    | decimal(4,2) | YES  |     | NULL    |                  |
+| end_practical | decimal(4,2) | YES  |     | NULL    |                  |
+| end_theory    | decimal(4,2) | YES  |     | NULL    |                  |
+| ca_marks      | decimal(6,2) | YES  |     | NULL    | STORED GENERATED |
+| final_marks   | decimal(6,2) | YES  |     | NULL    | STORED GENERATED |
++---------------+--------------+------+-----+---------+------------------+
+9 rows in set (0.00 sec)
