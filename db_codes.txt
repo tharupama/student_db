@@ -376,3 +376,7 @@ mysql> SELECT * FROM marks;
 | TG/1732 |  8.30 |        8.60 |         15.25 |      14.50 |         39.25 |      42.00 |    46.65 |       81.25 |
 +---------+-------+-------------+---------------+------------+---------------+------------+----------+-------------+
 15 rows in set (0.00 sec)
+
+mysql> UPDATE user SET name = "subash ekanayake", department = "ICT", email = "subash123@gmail.com", address = "10, wellawaththa, colombo", gender = "M" WHERE user_id = "D/1006";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
