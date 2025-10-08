@@ -100,3 +100,15 @@ mysql> DESC marks;
 | final_marks   | decimal(6,2) | YES  |     | NULL    | STORED GENERATED |
 +---------------+--------------+------+-----+---------+------------------+
 9 rows in set (0.00 sec)
+
+mysql> INSERT INTO marks (user_id, quiz, assessments, mid_practical, mid_theory, end_practical, end_theory)
+    -> VALUES ('TG/1718', 8.50, 9.00, 15.00, 14.00, 40.00, 45.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM marks;
++---------+------+-------------+---------------+------------+---------------+------------+----------+-------------+
+| user_id | quiz | assessments | mid_practical | mid_theory | end_practical | end_theory | ca_marks | final_marks |
++---------+------+-------------+---------------+------------+---------------+------------+----------+-------------+
+| TG/1718 | 8.50 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |    46.50 |       85.00 |
++---------+------+-------------+---------------+------------+---------------+------------+----------+-------------+
+1 row in set (0.00 sec)
