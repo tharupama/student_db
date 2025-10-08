@@ -37,3 +37,19 @@ mysql> DESC course_unit;
 | hours              | decimal(4,2)                               | YES  |     | NULL    |       |
 +--------------------+--------------------------------------------+------+-----+---------+-------+
 7 rows in set (0.01 sec)
+
+mysql> CREATE TABLE attendance(course_id VARCHAR(10),FOREIGN KEY(course_id) REFERENCES course_unit(course_id), user_id VARCHAR(10), FOREIGN KEY(user_id) REFERENCES user(user_id), date DATE, attendance ENUM("present","absent"), medical_status ENUM("submitted","not submitted","approved","rejected"));
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> DESC attendance;
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+| Field          | Type                                                    | Null | Key | Default | Extra |
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+| course_id      | varchar(10)                                             | YES  | MUL | NULL    |       |
+| user_id        | varchar(10)                                             | YES  | MUL | NULL    |       |
+| date           | date                                                    | YES  |     | NULL    |       |
+| attendance     | enum('present','absent')                                | YES  |     | NULL    |       |
+| medical_status | enum('submitted','not submitted','approved','rejected') | YES  |     | NULL    |       |
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
