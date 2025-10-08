@@ -53,3 +53,21 @@ mysql> DESC attendance;
 +----------------+---------------------------------------------------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
 
+mysql> CREATE TABLE marks(user_id VARCHAR(10), FOREIGN KEY(user_id) REFERENCES user(user_id), quiz DECIMAL(4,2), assessments DECIMAL(4,2), mid_practical DECIMAL(4,2), mid_theory DECIMAL(4,2), end_practical DECIMAL(4,2), end_theory DECIMAL(4,2));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DESC marks;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | YES  | MUL | NULL    |       |
+| quiz          | decimal(4,2) | YES  |     | NULL    |       |
+| assessments   | decimal(4,2) | YES  |     | NULL    |       |
+| mid_practical | decimal(4,2) | YES  |     | NULL    |       |
+| mid_theory    | decimal(4,2) | YES  |     | NULL    |       |
+| end_practical | decimal(4,2) | YES  |     | NULL    |       |
+| end_theory    | decimal(4,2) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql>
