@@ -112,3 +112,30 @@ mysql> SELECT * FROM marks;
 | TG/1718 | 8.50 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |    46.50 |       85.00 |
 +---------+------+-------------+---------------+------------+---------------+------------+----------+-------------+
 1 row in set (0.00 sec)
+
+mysql> ALTER TABLE marks MODIFY quiz DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE marks MODIFY assessments DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE marks MODIFY mid_practical DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE marks MODIFY mid_theory DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE marks MODIFY end_practical DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE marks MODIFY end_theory DECIMAL(4,2) NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO user VALUES ("TG/1719","naveen","ICT","naveen26@gmail.com","86 udawalawa", 0745908387, "F");
+Query OK, 1 row affected (0.01 sec)
