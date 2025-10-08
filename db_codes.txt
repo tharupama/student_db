@@ -20,3 +20,20 @@ mysql> DESC user;
 | gender         | char(1)                                    | YES  |     | NULL    |       |
 +----------------+--------------------------------------------+------+-----+---------+-------+
 7 rows in set (0.05 sec)
+
+mysql> CREATE TABLE course_unit(course_id VARCHAR(10) PRIMARY KEY, name VARCHAR(30), credits INT, type ENUM("theory","practical"), lecturer_in_charge VARCHAR(20), department ENUM("ICT","ET","BST","MULTIDISCIPLINARY"), hours DECIMAL(4,2));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESC course_unit;
++--------------------+--------------------------------------------+------+-----+---------+-------+
+| Field              | Type                                       | Null | Key | Default | Extra |
++--------------------+--------------------------------------------+------+-----+---------+-------+
+| course_id          | varchar(10)                                | NO   | PRI | NULL    |       |
+| name               | varchar(30)                                | YES  |     | NULL    |       |
+| credits            | int                                        | YES  |     | NULL    |       |
+| type               | enum('theory','practical')                 | YES  |     | NULL    |       |
+| lecturer_in_charge | varchar(20)                                | YES  |     | NULL    |       |
+| department         | enum('ICT','ET','BST','MULTIDISCIPLINARY') | YES  |     | NULL    |       |
+| hours              | decimal(4,2)                               | YES  |     | NULL    |       |
++--------------------+--------------------------------------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
