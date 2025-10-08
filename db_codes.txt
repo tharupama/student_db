@@ -276,3 +276,62 @@ mysql> SELECT * FROM user;
 | TO/3005 | L. Wickramasinghe | BST               | lwick.tech@univ.edu     | Admin Block, North Campus, Matara |      725555400 | F      |
 +---------+-------------------+-------------------+-------------------------+-----------------------------------+----------------+--------+
 27 rows in set (0.00 sec)
+
+mysql> INSERT INTO attendance (course_id, user_id, date, attendance, medical_status) VALUES
+    -> ('ENG1222','TG/1718','2025-09-01','present', NULL),
+    -> ('ENG1222','TG/1719','2025-09-01','absent','not submitted'),
+    -> ('ENG1222','TG/1720','2025-09-01','present', NULL),
+    -> ('ICT1212','TG/1721','2025-09-02','present', NULL),
+    -> ('ICT1212','TG/1722','2025-09-02','absent','submitted'),
+    -> ('ICT1212','TG/1723','2025-09-02','present', NULL),
+    -> ('ICT1222','TG/1724','2025-09-03','present', NULL),
+    -> ('ICT1222','TG/1725','2025-09-03','absent','not submitted'),
+    -> ('ICT1222','TG/1726','2025-09-03','present', NULL),
+    -> ('ICT1233','TG/1727','2025-09-04','present', NULL),
+    -> ('ICT1233','TG/1728','2025-09-04','absent','approved'),
+    -> ('ICT1233','TG/1729','2025-09-04','present', NULL),
+    -> ('ICT1242','TG/1730','2025-09-05','present', NULL),
+    -> ('ICT1242','TG/1718','2025-09-05','absent','rejected'),
+    -> ('ICT1242','TG/1719','2025-09-05','present', NULL),
+    -> ('ICT1253','TG/1720','2025-09-06','present', NULL),
+    -> ('ICT1253','TG/1721','2025-09-06','absent','submitted'),
+    -> ('ICT1253','TG/1722','2025-09-06','present', NULL),
+    -> ('TCS1212','TG/1723','2025-09-07','present', NULL),
+    -> ('TCS1212','TG/1724','2025-09-07','absent','not submitted'),
+    -> ('TCS1212','TG/1725','2025-09-07','present', NULL),
+    -> ('TMS1233','TG/1726','2025-09-08','present', NULL),
+    -> ('TMS1233','TG/1727','2025-09-08','absent','submitted'),
+    -> ('TMS1233','TG/1728','2025-09-08','present', NULL);
+Query OK, 24 rows affected (0.01 sec)
+Records: 24  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM attendance;
++-----------+---------+------------+------------+----------------+
+| course_id | user_id | date       | attendance | medical_status |
++-----------+---------+------------+------------+----------------+
+| ENG1222   | TG/1718 | 2025-09-01 | present    | NULL           |
+| ENG1222   | TG/1719 | 2025-09-01 | absent     | not submitted  |
+| ENG1222   | TG/1720 | 2025-09-01 | present    | NULL           |
+| ICT1212   | TG/1721 | 2025-09-02 | present    | NULL           |
+| ICT1212   | TG/1722 | 2025-09-02 | absent     | submitted      |
+| ICT1212   | TG/1723 | 2025-09-02 | present    | NULL           |
+| ICT1222   | TG/1724 | 2025-09-03 | present    | NULL           |
+| ICT1222   | TG/1725 | 2025-09-03 | absent     | not submitted  |
+| ICT1222   | TG/1726 | 2025-09-03 | present    | NULL           |
+| ICT1233   | TG/1727 | 2025-09-04 | present    | NULL           |
+| ICT1233   | TG/1728 | 2025-09-04 | absent     | approved       |
+| ICT1233   | TG/1729 | 2025-09-04 | present    | NULL           |
+| ICT1242   | TG/1730 | 2025-09-05 | present    | NULL           |
+| ICT1242   | TG/1718 | 2025-09-05 | absent     | rejected       |
+| ICT1242   | TG/1719 | 2025-09-05 | present    | NULL           |
+| ICT1253   | TG/1720 | 2025-09-06 | present    | NULL           |
+| ICT1253   | TG/1721 | 2025-09-06 | absent     | submitted      |
+| ICT1253   | TG/1722 | 2025-09-06 | present    | NULL           |
+| TCS1212   | TG/1723 | 2025-09-07 | present    | NULL           |
+| TCS1212   | TG/1724 | 2025-09-07 | absent     | not submitted  |
+| TCS1212   | TG/1725 | 2025-09-07 | present    | NULL           |
+| TMS1233   | TG/1726 | 2025-09-08 | present    | NULL           |
+| TMS1233   | TG/1727 | 2025-09-08 | absent     | submitted      |
+| TMS1233   | TG/1728 | 2025-09-08 | present    | NULL           |
++-----------+---------+------------+------------+----------------+
+24 rows in set (0.00 sec)
