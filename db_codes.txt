@@ -688,3 +688,36 @@ mysql> DESC marks;
 | grade         | enum('E(CA&ESA)','E(CA)','E(ESA)','N','M','A+','A','A-','B+','B','B-','C+','C','C-','D','E') | YES  |     | NULL    |       |
 +---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
 13 rows in set (0.00 sec)
+
+mysql> ALTER TABLE marks
+    ->   MODIFY quiz1       DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY quiz2       DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY quiz3       DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY assessments DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY mid_practical DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY mid_theory  DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY end_practical DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY end_theory  DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ->   MODIFY ca_marks    DECIMAL(5,2) NULL DEFAULT NULL;
+Query OK, 1 row affected (0.21 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> DESC marks;
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+| Field         | Type                                                                                         | Null | Key | Default | Extra |
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+| user_id       | varchar(10)                                                                                  | NO   | MUL | NULL    |       |
+| course_id     | varchar(10)                                                                                  | NO   | MUL | NULL    |       |
+| quiz1         | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| quiz2         | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| quiz3         | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| assessments   | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| mid_practical | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| mid_theory    | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| end_practical | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| end_theory    | decimal(5,2)                                                                                 | NO   |     | 0.00    |       |
+| ca_marks      | decimal(5,2)                                                                                 | YES  |     | NULL    |       |
+| eligibility   | enum('eligible','not eligible')                                                              | YES  |     | NULL    |       |
+| grade         | enum('E(CA&ESA)','E(CA)','E(ESA)','N','M','A+','A','A-','B+','B','B-','C+','C','C-','D','E') | YES  |     | NULL    |       |
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+13 rows in set (0.03 sec)
