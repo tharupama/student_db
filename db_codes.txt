@@ -786,3 +786,80 @@ mysql> SELECT * FROM marks;
 | TG/1718 | ICT1212   |  8.50 |  7.75 |  9.00 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |     7.00 | not eligible | NULL  |
 +---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+--------------+-------+
 1 row in set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE getcalculatedmarks(
+    ->   IN p_user_id VARCHAR(10),
+    ->   IN p_course_id VARCHAR(10)
+    -> )
+    -> BEGIN
+    ->   DECLARE q1 DECIMAL(6,2);
+    ->   DECLARE q2 DECIMAL(6,2);
+    ->   DECLARE q3 DECIMAL(6,2);
+    ->   DECLARE total_quiz DECIMAL(6,2);
+    ->   DECLARE p_mid_practical DECIMAL(6,2);
+    ->   DECLARE p_mid_theory DECIMAL(6,2);
+    ->   DECLARE end_practical DECIMAL(6,2);
+    ->   DECLARE end_theory DECIMAL(6,2);
+    ->   DECLARE p_ca_marks DECIMAL(6,2);
+    ->   DECLARE mid_marks DECIMAL(6,2);
+    ->   DECLARE p_eligibility VARCHAR(12) DEFAULT NULL;
+    ->   DECLARE v_min_quiz DECIMAL(6,2);
+    ->   DECLARE quizprecen DECIMAL(6,2);
+    ->
+    ->   SELECT quiz1, quiz2, quiz3
+    ->   INTO q1, q2, q3
+    ->   FROM marks
+    ->   WHERE user_id = p_user_id
+    ->     AND course_id = p_course_id
+    ->   LIMIT 1;
+    ->
+    ->
+    ->   SET v_min_quiz = LEAST(q1, q2, q3);
+    ->   SET total_quiz = (q1 + q2 + q3) - v_min_quiz;
+    ->   SET quizprecen = (total_quiz*10)/200;
+    ->
+    ->
+    ->   SELECT mid_practical, mid_theory, end_practical, end_theory
+    ->   INTO p_mid_practical, p_mid_theory, end_practical, end_theory
+    ->   FROM marks
+    ->   WHERE user_id = p_user_id
+    ->     AND course_id = p_course_id
+    ->   LIMIT 1;
+    ->
+    ->   SET mid_marks = (p_mid_practical + p_mid_theory) * 0.2;
+    ->   SELECT mid_marks;
+    ->   SET p_ca_marks = (quizprecen + mid_marks);
+    ->
+    ->   IF p_ca_marks < 12.00 THEN
+    ->     SET p_eligibility = 'not eligible';
+    ->   ELSE
+    ->     SET p_eligibility = 'eligible';
+    ->   END IF;
+    ->
+    ->   UPDATE marks
+    ->   SET ca_marks = p_ca_marks,
+    ->       eligibility = p_eligibility
+    ->   WHERE user_id = p_user_id
+    ->     AND course_id = p_course_id;
+    -> END //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DELIMITER ;
+mysql> CALL getcalculatedmarks("TG/1718","ICT1212");
++-----------+
+| mid_marks |
++-----------+
+|      5.80 |
++-----------+
+1 row in set (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM marks;
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+--------------+-------+
+| user_id | course_id | quiz1 | quiz2 | quiz3 | assessments | mid_practical | mid_theory | end_practical | end_theory | ca_marks | eligibility  | grade |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+--------------+-------+
+| TG/1718 | ICT1212   |  8.50 |  7.75 |  9.00 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |     6.68 | not eligible | NULL  |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+--------------+-------+
+1 row in set (0.00 sec)
