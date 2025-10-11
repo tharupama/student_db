@@ -508,3 +508,51 @@ mysql> DESC marks;
 | end_theory    | decimal(4,2) | NO   |     | 0.00    |       |
 +---------------+--------------+------+-----+---------+-------+
 10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM marks;
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+
+| user_id | course_id | quiz1 | quiz2 | quiz3 | assessments | mid_practical | mid_theory | end_practical | end_theory |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+
+| TG/1718 | ICT1212   |  8.50 |  7.75 |  9.00 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM user;
++---------+-------------------+-------------------+-------------------------+-----------------------------------+----------------+--------+
+| user_id | name              | department        | email                   | address                           | contact_number | gender |
++---------+-------------------+-------------------+-------------------------+-----------------------------------+----------------+--------+
+| A/4006  | S. Perera         | MULTIDISCIPLINARY | sperera.admin@univ.edu  | Admin Unit, Main Campus, Kandy    |      786223006 | M      |
+| D/1006  | subash ekanayake  | ICT               | subash123@gmail.com     | 10, wellawaththa, colombo         |      776123006 | M      |
+| LC/2001 | Prof. Senaka      | ICT               | senaka.lect@univ.edu    | 12, Lecture Hall Rd, Colombo      |      711001100 | M      |
+| LC/2002 | Dr. Harini        | ET                | harini.lect@univ.edu    | 5, Engineering Ave, Kandy         |      712002200 | F      |
+| LC/2003 | Mr. Ruwan         | BST               | ruwan.lect@univ.edu     | 8, Business Park, Galle           |      713003300 | M      |
+| LC/2004 | Ms. Sanduni       | MULTIDISCIPLINARY | sanduni.lect@univ.edu   | 3, Campus St, Matara              |      714004400 | F      |
+| LC/2005 | Dr. Pradeep       | ICT               | pradeep.lect@univ.edu   | 20, North Rd, Jaffna              |      715005500 | M      |
+| TG/1718 | tharupama         | ICT               | tharupama826@gmail.com  | 825weusbxudn                      |      765908387 | M      |
+| TG/1719 | Nimal             | ICT               | nimal01@gmail.com       | 12, Lake Road, Colombo            |      712345678 | M      |
+| TG/1720 | Saman             | ET                | saman89@edu.com         | 45, Galle Road, Matara            |      723456789 | M      |
+| TG/1721 | Anusha            | BST               | anusha.math@gmail.com   | 7, Main St, Kandy                 |      701234567 | F      |
+| TG/1722 | Priyanka          | MULTIDISCIPLINARY | priyanka_bio@mail.com   | 22, River View, Kurunegala        |      759876543 | F      |
+| TG/1723 | Kasun             | ICT               | kasun.chem@example.com  | 5, Hill Street, Negombo           |      774561238 | M      |
+| TG/1724 | Malsha            | ICT               | malsha.dev@mail.com     | 88, Garden Lane, Galle            |      761122334 | F      |
+| TG/1725 | Roshan            | ET                | roshan.eng@uni.lk       | 31, Temple Road, Jaffna           |      719988776 | M      |
+| TG/1726 | Kavindi           | BST               | kavindi.math@edu.lk     | 14, Palm Ave, Hambantota          |      727766554 | F      |
+| TG/1727 | Thilina           | MULTIDISCIPLINARY | thilina.bio@mail.com    | 9, Sea Drive, Batticaloa          |      754433221 | M      |
+| TG/1728 | Dilhani           | ICT               | dilhani.chem@gmail.com  | 60, Hill Top, Nuwara Eliya        |      778899001 | F      |
+| TG/1729 | Rohan             | ET                | rohan.dev@example.com   | 3, Market St, Polonnaruwa         |      715566778 | M      |
+| TG/1730 | Ishara            | BST               | ishara.eng@mail.com     | 27, Lake View, Trincomalee        |      766677889 | F      |
+| TG/1731 | Manjula           | MULTIDISCIPLINARY | manjula.math@gmail.com  | 102, Orchard Rd, Ratnapura        |      709988776 | M      |
+| TG/1732 | Kusal             | ICT               | kusal.dev@example.com   | 18, Riverbank, Anuradhapura       |      773355441 | M      |
+| TO/3001 | K. Silva          | ICT               | ksilva.tech@univ.edu    | Workshop 1, Tech Park, Colombo    |      721111000 | M      |
+| TO/3002 | A. Fernando       | ET                | afernando.tech@univ.edu | Tech Office, East Wing, Kandy     |      722222100 | F      |
+| TO/3003 | M. Perera         | ICT               | mperera.tech@univ.edu   | Lab 3, Science Block, Galle       |      723333200 | M      |
+| TO/3004 | S. Jayasuriya     | MULTIDISCIPLINARY | sjaya.tech@univ.edu     | Maintenance Unit, Main Campus     |      724444300 | M      |
+| TO/3005 | L. Wickramasinghe | BST               | lwick.tech@univ.edu     | Admin Block, North Campus, Matara |      725555400 | F      |
++---------+-------------------+-------------------+-------------------------+-----------------------------------+----------------+--------+
+27 rows in set (0.00 sec)
+
+mysql> DELETE FROM user where user_id = "TG/1718";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM marks;
+Empty set (0.00 sec)
