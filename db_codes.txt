@@ -380,3 +380,6 @@ mysql> SELECT * FROM marks;
 mysql> UPDATE user SET name = "subash ekanayake", department = "ICT", email = "subash123@gmail.com", address = "10, wellawaththa, colombo", gender = "M" WHERE user_id = "D/1006";
 Query OK, 1 row affected (0.01 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> DROP TABLE marks;
+Query OK, 0 rows affected (0.16 sec)
