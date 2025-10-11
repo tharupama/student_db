@@ -556,3 +556,74 @@ Query OK, 1 row affected (0.01 sec)
 
 mysql> SELECT * FROM marks;
 Empty set (0.00 sec)
+
+mysql> SELECT * FROM attendance;
++-----------+---------+------------+------------+----------------+
+| course_id | user_id | date       | attendance | medical_status |
++-----------+---------+------------+------------+----------------+
+| ENG1222   | TG/1719 | 2025-09-01 | absent     | not submitted  |
+| ENG1222   | TG/1720 | 2025-09-01 | present    | NULL           |
+| ICT1212   | TG/1721 | 2025-09-02 | present    | NULL           |
+| ICT1212   | TG/1722 | 2025-09-02 | absent     | submitted      |
+| ICT1212   | TG/1723 | 2025-09-02 | present    | NULL           |
+| ICT1222   | TG/1724 | 2025-09-03 | present    | NULL           |
+| ICT1222   | TG/1725 | 2025-09-03 | absent     | not submitted  |
+| ICT1222   | TG/1726 | 2025-09-03 | present    | NULL           |
+| ICT1233   | TG/1727 | 2025-09-04 | present    | NULL           |
+| ICT1233   | TG/1728 | 2025-09-04 | absent     | approved       |
+| ICT1233   | TG/1729 | 2025-09-04 | present    | NULL           |
+| ICT1242   | TG/1730 | 2025-09-05 | present    | NULL           |
+| ICT1242   | TG/1719 | 2025-09-05 | present    | NULL           |
+| ICT1253   | TG/1720 | 2025-09-06 | present    | NULL           |
+| ICT1253   | TG/1721 | 2025-09-06 | absent     | submitted      |
+| ICT1253   | TG/1722 | 2025-09-06 | present    | NULL           |
+| TCS1212   | TG/1723 | 2025-09-07 | present    | NULL           |
+| TCS1212   | TG/1724 | 2025-09-07 | absent     | not submitted  |
+| TCS1212   | TG/1725 | 2025-09-07 | present    | NULL           |
+| TMS1233   | TG/1726 | 2025-09-08 | present    | NULL           |
+| TMS1233   | TG/1727 | 2025-09-08 | absent     | submitted      |
+| TMS1233   | TG/1728 | 2025-09-08 | present    | NULL           |
++-----------+---------+------------+------------+----------------+
+22 rows in set (0.00 sec)
+
+mysql> DESC attendance;
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+| Field          | Type                                                    | Null | Key | Default | Extra |
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+| course_id      | varchar(10)                                             | YES  | MUL | NULL    |       |
+| user_id        | varchar(10)                                             | YES  | MUL | NULL    |       |
+| date           | date                                                    | YES  |     | NULL    |       |
+| attendance     | enum('present','absent')                                | YES  |     | NULL    |       |
+| medical_status | enum('submitted','not submitted','approved','rejected') | YES  |     | NULL    |       |
++----------------+---------------------------------------------------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM user where user_id = "TG/1719";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM attendance;
++-----------+---------+------------+------------+----------------+
+| course_id | user_id | date       | attendance | medical_status |
++-----------+---------+------------+------------+----------------+
+| ENG1222   | TG/1720 | 2025-09-01 | present    | NULL           |
+| ICT1212   | TG/1721 | 2025-09-02 | present    | NULL           |
+| ICT1212   | TG/1722 | 2025-09-02 | absent     | submitted      |
+| ICT1212   | TG/1723 | 2025-09-02 | present    | NULL           |
+| ICT1222   | TG/1724 | 2025-09-03 | present    | NULL           |
+| ICT1222   | TG/1725 | 2025-09-03 | absent     | not submitted  |
+| ICT1222   | TG/1726 | 2025-09-03 | present    | NULL           |
+| ICT1233   | TG/1727 | 2025-09-04 | present    | NULL           |
+| ICT1233   | TG/1728 | 2025-09-04 | absent     | approved       |
+| ICT1233   | TG/1729 | 2025-09-04 | present    | NULL           |
+| ICT1242   | TG/1730 | 2025-09-05 | present    | NULL           |
+| ICT1253   | TG/1720 | 2025-09-06 | present    | NULL           |
+| ICT1253   | TG/1721 | 2025-09-06 | absent     | submitted      |
+| ICT1253   | TG/1722 | 2025-09-06 | present    | NULL           |
+| TCS1212   | TG/1723 | 2025-09-07 | present    | NULL           |
+| TCS1212   | TG/1724 | 2025-09-07 | absent     | not submitted  |
+| TCS1212   | TG/1725 | 2025-09-07 | present    | NULL           |
+| TMS1233   | TG/1726 | 2025-09-08 | present    | NULL           |
+| TMS1233   | TG/1727 | 2025-09-08 | absent     | submitted      |
+| TMS1233   | TG/1728 | 2025-09-08 | present    | NULL           |
++-----------+---------+------------+------------+----------------+
+20 rows in set (0.00 sec)
