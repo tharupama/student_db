@@ -627,3 +627,64 @@ mysql> SELECT * FROM attendance;
 | TMS1233   | TG/1728 | 2025-09-08 | present    | NULL           |
 +-----------+---------+------------+------------+----------------+
 20 rows in set (0.00 sec)
+
+mysql> ALTER TABLE marks ADD ca_marks DECIMAL(4,2);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECt * FROm marks;
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+
+| user_id | course_id | quiz1 | quiz2 | quiz3 | assessments | mid_practical | mid_theory | end_practical | end_theory | ca_marks |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+
+| TG/1718 | ICT1212   |  8.50 |  7.75 |  9.00 |        9.00 |         15.00 |      14.00 |         40.00 |      45.00 |     NULL |
++---------+-----------+-------+-------+-------+-------------+---------------+------------+---------------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE marks ADD eligibility ENUM("eligible","not eligible");
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC maeks;
+ERROR 1146 (42S02): Table 'student_db.maeks' doesn't exist
+mysql> DESC marks;
++---------------+---------------------------------+------+-----+---------+-------+
+| Field         | Type                            | Null | Key | Default | Extra |
++---------------+---------------------------------+------+-----+---------+-------+
+| user_id       | varchar(10)                     | NO   | MUL | NULL    |       |
+| course_id     | varchar(10)                     | NO   | MUL | NULL    |       |
+| quiz1         | decimal(4,2)                    | NO   |     | 0.00    |       |
+| quiz2         | decimal(4,2)                    | NO   |     | 0.00    |       |
+| quiz3         | decimal(4,2)                    | NO   |     | 0.00    |       |
+| assessments   | decimal(4,2)                    | NO   |     | 0.00    |       |
+| mid_practical | decimal(4,2)                    | NO   |     | 0.00    |       |
+| mid_theory    | decimal(4,2)                    | NO   |     | 0.00    |       |
+| end_practical | decimal(4,2)                    | NO   |     | 0.00    |       |
+| end_theory    | decimal(4,2)                    | NO   |     | 0.00    |       |
+| ca_marks      | decimal(4,2)                    | YES  |     | NULL    |       |
+| eligibility   | enum('eligible','not eligible') | YES  |     | NULL    |       |
++---------------+---------------------------------+------+-----+---------+-------+
+12 rows in set (0.00 sec)
+
+mysql> ALTER TABLE marks ADD grade ENUM("E(CA&ESA)","E(CA)","E(ESA)","N","M","A+","A","A-","B+","B","B-","C+","C","C-","D","E");
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC marks;
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+| Field         | Type                                                                                         | Null | Key | Default | Extra |
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+| user_id       | varchar(10)                                                                                  | NO   | MUL | NULL    |       |
+| course_id     | varchar(10)                                                                                  | NO   | MUL | NULL    |       |
+| quiz1         | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| quiz2         | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| quiz3         | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| assessments   | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| mid_practical | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| mid_theory    | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| end_practical | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| end_theory    | decimal(4,2)                                                                                 | NO   |     | 0.00    |       |
+| ca_marks      | decimal(4,2)                                                                                 | YES  |     | NULL    |       |
+| eligibility   | enum('eligible','not eligible')                                                              | YES  |     | NULL    |       |
+| grade         | enum('E(CA&ESA)','E(CA)','E(ESA)','N','M','A+','A','A-','B+','B','B-','C+','C','C-','D','E') | YES  |     | NULL    |       |
++---------------+----------------------------------------------------------------------------------------------+------+-----+---------+-------+
+13 rows in set (0.00 sec)
