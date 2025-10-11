@@ -440,3 +440,71 @@ mysql> DESC marks;
 mysql> ALTER TABLE marks ADD PRIMARY KEY (user_id);
 Query OK, 0 rows affected (0.08 sec)
 Records: 0  Duplicates: 0  Warnings: 0
+
+| marks | CREATE TABLE `marks` (
+  `user_id` varchar(10) NOT NULL,
+  `course_id` varchar(10) NOT NULL,
+  `quiz1` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `quiz2` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `quiz3` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `assessments` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `mid_practical` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `mid_theory` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `end_practical` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `end_theory` decimal(4,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`user_id`),
+  KEY `fk_marks_course_unit` (`course_id`),
+  CONSTRAINT `marks_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `marks_chk_1` CHECK ((`quiz1` between 0 and 100)),
+  CONSTRAINT `marks_chk_2` CHECK ((`quiz2` between 0 and 100)),
+  CONSTRAINT `marks_chk_3` CHECK ((`quiz3` between 0 and 100)),
+  CONSTRAINT `marks_chk_4` CHECK ((`assessments` between 0 and 100)),
+  CONSTRAINT `marks_chk_5` CHECK ((`mid_practical` between 0 and 100)),
+  CONSTRAINT `marks_chk_6` CHECK ((`mid_theory` between 0 and 100)),
+  CONSTRAINT `marks_chk_7` CHECK ((`end_practical` between 0 and 100)),
+  CONSTRAINT `marks_chk_8` CHECK ((`end_theory` between 0 and 100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> ALTER TABLE marks DROP foreign key marks_ibfk_1;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC marks;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | NO   | PRI | NULL    |       |
+| course_id     | varchar(10)  | NO   | MUL | NULL    |       |
+| quiz1         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz2         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz3         | decimal(4,2) | NO   |     | 0.00    |       |
+| assessments   | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_theory    | decimal(4,2) | NO   |     | 0.00    |       |
+| end_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| end_theory    | decimal(4,2) | NO   |     | 0.00    |       |
++---------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> ALTER TABLE marks DROP PRIMARY KEY;
+Query OK, 1 row affected (0.09 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> DESC marks;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | NO   |     | NULL    |       |
+| course_id     | varchar(10)  | NO   | MUL | NULL    |       |
+| quiz1         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz2         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz3         | decimal(4,2) | NO   |     | 0.00    |       |
+| assessments   | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_theory    | decimal(4,2) | NO   |     | 0.00    |       |
+| end_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| end_theory    | decimal(4,2) | NO   |     | 0.00    |       |
++---------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
