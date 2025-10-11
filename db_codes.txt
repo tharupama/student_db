@@ -383,3 +383,27 @@ Rows matched: 1  Changed: 1  Warnings: 0
 
 mysql> DROP TABLE marks;
 Query OK, 0 rows affected (0.16 sec)
+
+mysql> CREATE TABLE marks(user_id VARCHAR(10), FOREIGN KEY(user_id) REFERENCES user(user_id), quiz1 DECIMAL(4,2)
+    -> CHECK(quiz1 BETWEEN 0 AND 100) NOT NULL DEFAULT 0,quiz2 DECIMAL(4,2) CHECK(quiz2 BETWEEN 0 AND 100) NOT NULL DEFAULT 0,
+    -> quiz3 DECIMAL(4,2) CHECK(quiz3 BETWEEN 0 AND 100) NOT NULL DEFAULT 0,
+    -> assessments DECIMAL(4,2) CHECK(assessments BETWEEN 0 AND 100) NOT NULL DEFAULT 0, mid_practical DECIMAL(4,2)
+    -> CHECK(mid_practical BETWEEN 0 AND 100) NOT NULL DEFAULT 0, mid_theory DECIMAL(4,2) CHECK(mid_theory BETWEEN 0 AND 100) NOT NULL DEFAULT 0,
+    -> end_practical DECIMAL(4,2) CHECK(end_practical BETWEEN 0 AND 100) NOT NULL DEFAULT 0, end_theory DECIMAL(4,2) CHECK(end_theory BETWEEN 0 AND 100) NOT NULL DEFAULT 0);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DESC marks;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| user_id       | varchar(10)  | YES  | MUL | NULL    |       |
+| quiz1         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz2         | decimal(4,2) | NO   |     | 0.00    |       |
+| quiz3         | decimal(4,2) | NO   |     | 0.00    |       |
+| assessments   | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| mid_theory    | decimal(4,2) | NO   |     | 0.00    |       |
+| end_practical | decimal(4,2) | NO   |     | 0.00    |       |
+| end_theory    | decimal(4,2) | NO   |     | 0.00    |       |
++---------------+--------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
